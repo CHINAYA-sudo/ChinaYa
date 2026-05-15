@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChinaYa — Mayoreo y Menudeo directo de China</title>
+  <meta name="description" content="ChinaYa — Productos directos desde China al mejor precio. Mayoreo y menudeo en Zapopan, Guadalajara. Electrónica, ropa, hogar, juguetes y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #DE2910;
+      --red-light: #FAECE7;
+      --red-dark: #712B13;
+      --red-mid: #993C1D;
+      --bg: #ffffff;
+      --bg2: #f7f6f3;
+      --text: #1a1a1a;
+      --text2: #666;
+      --border: rgba(0,0,0,0.1);
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .85rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-cn {
+      background: var(--red);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text2);
+      font-size: 13px;
+      cursor: pointer;
+      transition: color .15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 7px 16px;
+      border-radius: var(--radius);
+      font-weight: 500 !important;
+    }
+
+    /* HERO */
+    #inicio {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--red-light);
+      color: var(--red-dark);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span { color: var(--red); }
+
+    .hero p {
+      color: var(--text2);
+      font-size: 14px;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity .15s;
+    }
+
+    .btn-red:hover { opacity: .88; }
+
+    .btn-out {
+      background: transparent;
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      border: 0.5px solid rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .btn-out:hover { background: var(--bg2); }
+
+    .hero-panel {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tier-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .tier-card {
+      border-radius: var(--radius);
+      padding: 14px;
+      border: 0.5px solid var(--border);
+    }
+
+    .tier-card.may { background: var(--red-light); border-color: #F5C4B3; }
+    .tier-card.men { background: var(--bg); }
+
+    .tier-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tier-card.may .tier-label { color: var(--red-dark); }
+    .tier-card.men .tier-label { color: var(--text2); }
+    .tier-desc { font-size: 12px; color: var(--text2); line-height: 1.4; }
+
+    .mini-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+
+    .mini-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* SECTIONS */
+    .sec-wrap { padding: 3.5rem 2rem; }
+    .sec-wrap.alt { background: var(--bg2); }
+    .sec-inner { max-width: 960px; margin: 0 auto; }
+
+    .slabel {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: .4rem;
+    }
+
+    .stitle {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -.5px;
+      margin-bottom: .6rem;
+    }
+
+    .ssub {
+      color: var(--text2);
+      font-size: 14px;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    /* CATEGORÍAS */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .cat-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+
+    .cat-card:hover { border-color: var(--red); }
+    .cat-ico { font-size: 28px; margin-bottom: 8px; display: block; }
+    .cat-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .cat-sub { font-size: 11px; color: var(--text2); }
+
+    /* PRODUCTOS */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 2.5rem;
+    }
+
+    .prod-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color .15s;
+    }
+
+    .prod-card:hover { border-color: var(--red); }
+
+    .prod-img {
+      background: var(--bg2);
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .prod-body { padding: 12px; }
+    .prod-name { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+
+    .prod-prices { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .price-tag {
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .tag-may { background: var(--red-light); color: var(--red-dark); }
+    .tag-men { background: #E6F1FB; color: #0C447C; }
+    .price-val { font-weight: 500; }
+
+    .prod-btn {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity .15s;
+    }
+
+    .prod-btn:hover { opacity: .88; }
+
+    /* CÓMO */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .how-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+
+    .how-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--red);
+      opacity: .2;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .how-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .how-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+    .mayorista-bar {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* CONTACTO */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+
+    .contact-left h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+
+    .contact-left p {
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .citem {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 10px;
+    }
+
+    .citem i { color: var(--red); font-size: 16px; }
+    .citem a { color: var(--text2); }
+    .citem a:hover { color: var(--red); }
+
+    .cform { display: flex; flex-direction: column; gap: 10px; }
+
+    .cform input,
+    .cform select,
+    .cform textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      border: 0.5px solid rgba(0,0,0,0.2);
+      background: var(--bg);
+      font-size: 13px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      resize: none;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    .cform input:focus,
+    .cform select:focus,
+    .cform textarea:focus {
+      border-color: var(--red);
+    }
+
+    .cform button {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 11px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity .15s;
+    }
+
+    .cform button:hover { opacity: .88; }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text2);
+      max-width: 960px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      #inicio { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1rem; }
+      .hero h1 { font-size: 32px; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .sec-wrap { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <span class="logo-cn">China</span><span>Ya</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#como">¿Cómo comprar?</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#contacto" class="nav-cta">Pedir ahora</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div>
+      <div class="hero-tag">
+        <i class="ti ti-certificate"></i>
+        Productos directos desde China
+      </div>
+      <h1>Mayoreo y<br>menudeo,<br><span>al mejor precio</span></h1>
+      <p>En ChinaYa encuentras todo lo que necesitas, desde una pieza hasta cientos. Precios de mayoreo desde el primer pedido grande, o lleva lo que quieras al menudeo.</p>
+      <div class="hero-btns">
+        <a href="#catalogo" class="btn-red">Ver catálogo</a>
+        <a href="#contacto" class="btn-out">Pedir ahora</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="tier-row">
+        <div class="tier-card may">
+          <div class="tier-label"><i class="ti ti-building-warehouse"></i> Mayoreo</div>
+          <div class="tier-desc">Desde 12 piezas · precios de fábrica · ideal para revendedores</div>
+        </div>
+        <div class="tier-card men">
+          <div class="tier-label"><i class="ti ti-shopping-bag"></i> Menudeo</div>
+          <div class="tier-desc">Desde 1 pieza · envío a domicilio · pago fácil</div>
+        </div>
+      </div>
+      <div class="mini-stat">
+        <span style="font-size:13px;color:var(--text2)">Productos disponibles</span>
+        <span class="mini-val">500+</span>
+      </div>
+      <div class="mini-stat">
+        <span style="font-size:13px;color:var(--text2)">Entrega en GDL</span>
+        <span class="mini-val">24–48 hrs</span>
+      </div>
+      <div class="mini-stat">
+        <span style="font-size:13px;color:var(--text2)">Ahorro en mayoreo</span>
+        <span class="mini-val">hasta 60%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <div class="sec-wrap alt" id="catalogo">
+    <div class="sec-inner">
+      <p class="slabel">Catálogo</p>
+      <h2 class="stitle">Todas las categorías</h2>
+      <p class="ssub">Desde electrónica hasta hogar — tenemos de todo, en cantidad o por pieza.</p>
+      <div class="cat-grid">
+        <div class="cat-card"><span class="cat-ico">📱</span><div class="cat-name">Electrónica</div><div class="cat-sub">Gadgets y accesorios</div></div>
+        <div class="cat-card"><span class="cat-ico">👗</span><div class="cat-name">Ropa y moda</div><div class="cat-sub">Prendas y textiles</div></div>
+        <div class="cat-card"><span class="cat-ico">🏠</span><div class="cat-name">Hogar</div><div class="cat-sub">Cocina y decoración</div></div>
+        <div class="cat-card"><span class="cat-ico">🧸</span><div class="cat-name">Juguetes</div><div class="cat-sub">Niños y coleccionables</div></div>
+        <div class="cat-card"><span class="cat-ico">🔧</span><div class="cat-name">Herramientas</div><div class="cat-sub">Ferretería y taller</div></div>
+        <div class="cat-card"><span class="cat-ico">🧴</span><div class="cat-name">Belleza y salud</div><div class="cat-sub">Cuidado personal</div></div>
+        <div class="cat-card"><span class="cat-ico">🎒</span><div class="cat-name">Bolsas y maletas</div><div class="cat-sub">Viaje y trabajo</div></div>
+        <div class="cat-card"><span class="cat-ico">⚡</span><div class="cat-name">Iluminación</div><div class="cat-sub">LED y lámparas</div></div>
+        <div class="cat-card"><span class="cat-ico">🖨️</span><div class="cat-name">Oficina</div><div class="cat-sub">Papelería y tech</div></div>
+        <div class="cat-card"><span class="cat-ico">🐾</span><div class="cat-name">Mascotas</div><div class="cat-sub">Accesorios y juegos</div></div>
+      </div>
+
+      <div style="margin-top:2.5rem">
+        <p class="slabel">Destacados</p>
+        <h2 class="stitle">Lo más vendido</h2>
+        <p class="ssub">Con precio de mayoreo y menudeo en cada producto.</p>
+        <div class="prod-grid">
+          <div class="prod-card">
+            <div class="prod-img">📱</div>
+            <div class="prod-body">
+              <div class="prod-name">Audífonos inalámbricos</div>
+              <div class="prod-prices">
+                <div class="price-row"><span class="price-tag tag-may">Mayoreo 12+</span><span class="price-val">$89</span></div>
+                <div class="price-row"><span class="price-tag tag-men">Menudeo</span><span class="price-val">$149</span></div>
+              </div>
+              <a href="https://wa.me/523328064732?text=Hola%20ChinaYa!%20Quiero%20pedir%20audífonos%20inalámbricos" target="_blank"><button class="prod-btn">Pedir por WhatsApp</button></a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img">💡</div>
+            <div class="prod-body">
+              <div class="prod-name">Tira LED 5m RGB</div>
+              <div class="prod-prices">
+                <div class="price-row"><span class="price-tag tag-may">Mayoreo 20+</span><span class="price-val">$55</span></div>
+                <div class="price-row"><span class="price-tag tag-men">Menudeo</span><span class="price-val">$99</span></div>
+              </div>
+              <a href="https://wa.me/523328064732?text=Hola%20ChinaYa!%20Quiero%20pedir%20tiras%20LED" target="_blank"><button class="prod-btn">Pedir por WhatsApp</button></a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img">🧴</div>
+            <div class="prod-body">
+              <div class="prod-name">Set skincare 5 piezas</div>
+              <div class="prod-prices">
+                <div class="price-row"><span class="price-tag tag-may">Mayoreo 24+</span><span class="price-val">$120</span></div>
+                <div class="price-row"><span class="price-tag tag-men">Menudeo</span><span class="price-val">$199</span></div>
+              </div>
+              <a href="https://wa.me/523328064732?text=Hola%20ChinaYa!%20Quiero%20pedir%20sets%20de%20skincare" target="_blank"><button class="prod-btn">Pedir por WhatsApp</button></a>
+            </div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img">🔧</div>
+            <div class="prod-body">
+              <div class="prod-name">Kit herramientas 30 pzas</div>
+              <div class="prod-prices">
+                <div class="price-row"><span class="price-tag tag-may">Mayoreo 10+</span><span class="price-val">$145</span></div>
+                <div class="price-row"><span class="price-tag tag-men">Menudeo</span><span class="price-val">$249</span></div>
+              </div>
+              <a href="https://wa.me/523328064732?text=Hola%20ChinaYa!%20Quiero%20pedir%20kits%20de%20herramientas" target="_blank"><button class="prod-btn">Pedir por WhatsApp</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CÓMO COMPRAR -->
+  <div class="sec-wrap" id="como">
+    <div class="sec-inner">
+      <p class="slabel">¿Cómo funciona?</p>
+      <h2 class="stitle">Comprar es muy fácil</h2>
+      <p class="ssub">En 4 pasos tienes tu pedido en mano, ya sea una pieza o un cargamento.</p>
+      <div class="how-grid">
+        <div class="how-card"><div class="how-num">01</div><div class="how-title">Elige tu producto</div><div class="how-desc">Navega el catálogo y encuentra lo que necesitas. Escríbenos si no lo ves.</div></div>
+        <div class="how-card"><div class="how-num">02</div><div class="how-title">Elige tu cantidad</div><div class="how-desc">Dinos cuántas piezas quieres. El precio baja automáticamente en mayoreo.</div></div>
+        <div class="how-card"><div class="how-num">03</div><div class="how-title">Confirma y paga</div><div class="how-desc">Transferencia, efectivo o tarjeta. Opciones de crédito para mayoristas.</div></div>
+        <div class="how-card"><div class="how-num">04</div><div class="how-title">Recibe en casa</div><div class="how-desc">Entrega a domicilio en GDL en 24–48 hrs. Envíos a todo México.</div></div>
+      </div>
+      <div class="mayorista-bar">
+        <div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:4px">¿Eres revendedor?</div>
+          <div style="font-size:13px;color:var(--text2)">Regístrate como mayorista y accede a precios especiales desde tu primer pedido.</div>
+        </div>
+        <a href="https://wa.me/523328064732?text=Hola!%20Quiero%20registrarme%20como%20revendedor%20mayorista%20en%20ChinaYa" target="_blank" class="btn-red">Quiero ser mayorista</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div class="sec-wrap alt" id="contacto">
+    <div class="sec-inner">
+      <p class="slabel">Contacto</p>
+      <h2 class="stitle">Haz tu pedido ahora</h2>
+      <div class="contact-wrap">
+        <div class="contact-left">
+          <h3>¿Listo para comprar?</h3>
+          <p>Mándanos un mensaje y en menos de 2 horas te respondemos con disponibilidad, precios y opciones de envío.</p>
+          <div class="citem">
+            <i class="ti ti-brand-whatsapp"></i>
+            <a href="https://wa.me/523328064732" target="_blank">+52 33 2806 4732</a>
+          </div>
+          <div class="citem">
+            <i class="ti ti-mail"></i>
+            <a href="mailto:china.yapedidos@gmail.com">china.yapedidos@gmail.com</a>
+          </div>
+          <div class="citem">
+            <i class="ti ti-map-pin"></i> Zapopan, Jalisco
+          </div>
+          <div class="citem">
+            <i class="ti ti-clock"></i> Lun–Sáb 9am–7pm
+          </div>
+          <div style="margin-top:1rem;padding:10px 14px;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);font-size:12px;color:var(--text2)">
+            <i class="ti ti-truck-delivery" style="color:var(--red);font-size:14px;vertical-align:-2px"></i>
+            Entrega gratis en Zapopan y GDL en pedidos mayores a $500
+          </div>
+        </div>
+        <form class="cform" onsubmit="enviarWA(event)">
+          <input type="text" id="f-nombre" placeholder="Tu nombre" required />
+          <input type="tel" id="f-tel" placeholder="WhatsApp o teléfono" />
+          <select id="f-tipo">
+            <option value="">¿Qué tipo de compra?</option>
+            <option>Menudeo (pocas piezas)</option>
+            <option>Mayoreo (12+ piezas)</option>
+            <option>Quiero ser revendedor</option>
+            <option>Tengo una duda</option>
+          </select>
+          <input type="text" id="f-prod" placeholder="¿Qué producto te interesa?" />
+          <textarea id="f-msg" rows="3" placeholder="Cuéntanos más — cantidad, uso, presupuesto..."></textarea>
+          <button type="submit">Enviar por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo" style="font-size:17px">
+      <span class="logo-cn" style="font-size:14px;padding:1px 7px">China</span>
+      <span>Ya</span>
+    </div>
+    <span>© 2025 ChinaYa · Zapopan, Jalisco · Mayoreo y Menudeo</span>
+    <a href="mailto:china.yapedidos@gmail.com" style="color:var(--text2)">china.yapedidos@gmail.com</a>
+  </footer>
+
+  <script>
+    function enviarWA(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('f-nombre').value;
+      const tel = document.getElementById('f-tel').value;
+      const tipo = document.getElementById('f-tipo').value;
+      const prod = document.getElementById('f-prod').value;
+      const msg = document.getElementById('f-msg').value;
+      const texto = `Hola ChinaYa! 👋\n\nNombre: ${nombre}\nTeléfono: ${tel}\nTipo de compra: ${tipo}\nProducto: ${prod}\nMensaje: ${msg}`;
+      window.open('https://wa.me/523328064732?text=' + encodeURIComponent(texto), '_blank');
+    }
+  </script>
+
+</body>
+</html>
